@@ -1,0 +1,29 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "Build",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",                               //产生调试信息，没有这个无法下断点，无法单步
+                "-Wall",                            //编译后显示所有警告
+                "-std=c++11",                       //使用c++ 11 标准
+                "${file}",
+                "-o",
+                "${fileDirname}/bin/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "调试器生成的任务。"
+        }
+    ],
+    "version": "2.0.0"
+}
