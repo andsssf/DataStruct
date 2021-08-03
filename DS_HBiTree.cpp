@@ -14,16 +14,17 @@ LBiTreeNode<char>* initNode(char a) {
 
 template <class T>
 LBiTree<T>::LBiTree() {
-    // root = nullptr;
-    root = initNode('A');
-    root->left = initNode('B');
-    root->right = initNode('C');
+    root = nullptr;
+    // 在没有为这个普通二叉树制定应用前，是在无法制定插入和删除操作，只能用下面愚笨的方法进行遍历测试。
+    // root = initNode('A');
+    // root->left = initNode('B');
+    // root->right = initNode('C');
 
-    root->left->left = initNode('D');
-    root->left->right = initNode('E');
-    root->left->left->right = initNode('G');
+    // root->left->left = initNode('D');
+    // root->left->right = initNode('E');
+    // root->left->left->right = initNode('G');
 
-    root->right->left = initNode('F');
+    // root->right->left = initNode('F');
 }
 
 template <class T>

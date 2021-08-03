@@ -28,6 +28,7 @@ int main() {
     //         cout << temp << endl;
     // }
 
+    //二叉树测试代码
     LBiTree<char> T;
     cout << T.preOrder() << endl;
     return 0;
