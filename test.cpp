@@ -29,19 +29,24 @@ int main() {
     // }
 
     //二叉树测试代码
-    LBSTree<char> T;
-    char csets[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-    for (char c : csets) {
-        T.insert(c);
-    }
-    // T.insert('4');
-    // T.insert('5');
-    // T.insert('2');
-    // T.insert('1');
-    // T.insert('3');
-    cout << T.midOrder() << endl;
-    cout << T.layerOrder() << endl;
-    // T.remove('5');
-    // cout << T.preOrder() << endl;
+    // LBSTree<char> T;
+    // char csets[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    // for (char c : csets) {
+    //     T.insert(c);
+    // }
+    // // T.insert('4');
+    // // T.insert('5');
+    // // T.insert('2');
+    // // T.insert('1');
+    // // T.insert('3');
+    // cout << T.midOrder() << endl;
+    // cout << T.layerOrder() << endl;
+    // // T.remove('5');
+    // // cout << T.preOrder() << endl;
+
+    // 标准输出流测试
+    cout << "标准输出" << endl;
+    cerr << "标准错误" << endl;
+    
     return 0;
 }
