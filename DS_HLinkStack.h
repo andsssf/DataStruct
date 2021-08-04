@@ -1,4 +1,7 @@
 #pragma once
+/*
+    链栈
+*/
 template <class T>
 struct LStackNode{
     T data;
