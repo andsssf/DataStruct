@@ -45,8 +45,8 @@ int main() {
     // // cout << T.preOrder() << endl;
 
     // 标准输出流测试
-    cout << "标准输出" << endl;
-    cerr << "标准错误" << endl;
-    
+    // cout << "标准输出" << endl;
+    // cerr << "标准错误" << endl;
+
     return 0;
 }
