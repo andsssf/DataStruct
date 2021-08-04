@@ -61,7 +61,9 @@ bool LBSTree<T>::insert(pLBiTreeNode &pNode, T elem) {
 
 template <class T>
 bool LBSTree<T>::remove(const T &elem) {
-    return remove(root, elem);
+    bool flag = remove(root, elem);
+    if (!checkBalanceR(root)) makeBalance();
+    return flag;
 }
 
 template <class T>
@@ -93,7 +95,7 @@ bool LBSTree<T>::remove(pLBiTreeNode &pNode, const T &elem) {
 }
 
 // template <class T>
-// string LBiTree<T>::preOrder() {
+// string LBSTree<T>::preOrder() {
 //     string out = "";
 //     LStack<pLBiTreeNode> S;
 //     pLBiTreeNode temp = root;
@@ -190,7 +192,7 @@ bool LBSTree<T>::makeBalance() {
     if (*temp == nullptr) return false;    // 定位失败
     
     // 情况1(LL)：A的左孩子的左子树插入导致A不平衡，将A的左孩子右上旋。
-    if (getDeep((*temp)->left) - getDeep((*temp)->right) == 2 && getDeep((*temp)->left->left) - getDeep((*temp)->left->right) == 1) {
+    if (getDeep((*temp)->left) - getDeep((*temp)->right) == 2 && getDeep((*temp)->left->left) - getDeep((*temp)->left->right) <= 1 && getDeep((*temp)->left->left) - getDeep((*temp)->left->right) >=0) {
         pLBiTreeNode alc = (*temp)->left;
         pLBiTreeNode a = *temp;
         *temp = alc;
@@ -199,7 +201,7 @@ bool LBSTree<T>::makeBalance() {
         return true;
     }
     // 情况2(RR)：A的右孩子的右子树插入导致A不平衡，将A的右孩子左上旋。
-    if (getDeep((*temp)->right) - getDeep((*temp)->left) == 2 && getDeep((*temp)->right->right) - getDeep((*temp)->right->left) == 1) {
+    if (getDeep((*temp)->right) - getDeep((*temp)->left) == 2 && getDeep((*temp)->right->right) - getDeep((*temp)->right->left) <= 1 && getDeep((*temp)->right->right) - getDeep((*temp)->right->left) >= 0) {
         pLBiTreeNode arc = (*temp)->right;
         pLBiTreeNode a = *temp;
         *temp = arc;

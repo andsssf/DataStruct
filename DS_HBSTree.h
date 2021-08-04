@@ -23,10 +23,11 @@ class LBSTree {
     bool remove(const T &elem);
     
     // 以下是屎一样的代码
-    // std::string preOrder();
+    std::string preOrder();
     std::string midOrder();
     // std::string afterOrder();
     std::string layerOrder();
+    std::string prettyShow();
 
     bool getNode(const T &elem, pLBiTreeNode p);
     
