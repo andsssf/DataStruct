@@ -42,6 +42,6 @@ int main() {
     cout << T.midOrder() << endl;
     cout << T.layerOrder() << endl;
     // T.remove('5');
-    cout << T.layerOrder() << endl;
+    // cout << T.preOrder() << endl;
     return 0;
 }

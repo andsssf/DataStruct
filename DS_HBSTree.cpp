@@ -285,6 +285,7 @@ bool LBSTree<T>::makeBalance() {
         arc->left = a;
         return true;
     }
+    // 未知情况
     return false;
 }
 
