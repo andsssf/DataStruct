@@ -41,7 +41,10 @@ int main() {
     // // T.insert('3');
     // cout << T.midOrder() << endl;
     // cout << T.layerOrder() << endl;
-    // // T.remove('5');
+    // T.remove('0');
+    // T.remove('2');
+    // cout << T.midOrder() << endl;
+    // cout << T.layerOrder() << endl;
     // // cout << T.preOrder() << endl;
 
     // 标准输出流测试
