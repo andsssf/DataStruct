@@ -1,7 +1,7 @@
 #include <iostream>
 #include "DS_HSqQueue.h"
 #include "DS_HLinkQueue.h"
-#include "DS_HBiTree.h"
+#include "DS_HBSTree.h"
 
 using namespace std;
 
@@ -29,7 +29,17 @@ int main() {
     // }
 
     //二叉树测试代码
-    LBiTree<char> T;
-    cout << T.preOrder() << endl;
+    LBSTree<char> T;
+    char csets[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    for (char c : csets) {
+        T.insert(c);
+    }
+    // T.insert('0');
+    // T.insert('1');
+    // T.insert('2');
+    cout << T.midOrder() << endl;
+    cout << T.layerOrder() << endl;
+    // T.remove('d');
+    // cout << T.layerOrder() << endl;
     return 0;
 }
