@@ -40,59 +40,101 @@ int LBSTree<T>::deep() {
 
 template <class T>
 bool LBSTree<T>::insert(T elem) {
-    bool flag = insert(root, elem);
+    // 使用非递归方法
+    pLBiTreeNode *temp = &root;
+    while (*temp != nullptr) {
+        if ((*temp)->data == elem) return false;
+        if ((*temp)->data > elem) temp = &((*temp)->left);
+        else temp = &((*temp)->right);
+    }
+    *temp = new LBiTreeNode<T>;
+    (*temp)->data = elem;
+    (*temp)->left = nullptr;
+    (*temp)->right = nullptr;
+
     if (!checkBalanceR(root)) makeBalance();
-    return flag;
+    return true;
 }
 
-template <class T>
-bool LBSTree<T>::insert(pLBiTreeNode &pNode, T elem) {
-    if (pNode == nullptr) {
-        pNode = new LBiTreeNode<T>;
-        pNode->data = elem;
-        pNode->left = nullptr;
-        pNode->right = nullptr;
-        return true;
-    }
-    if (pNode->data == elem) return false;
-    if (pNode->data > elem) return insert(pNode->left, elem);
-    else return insert(pNode->right, elem);
-}
+// template <class T>
+// bool LBSTree<T>::insert(pLBiTreeNode &pNode, T elem) {
+//     // 递归方法
+//     if (pNode == nullptr) {
+//         pNode = new LBiTreeNode<T>;
+//         pNode->data = elem;
+//         pNode->left = nullptr;
+//         pNode->right = nullptr;
+//         return true;
+//     }
+//     if (pNode->data == elem) return false;
+//     if (pNode->data > elem) return insert(pNode->left, elem);
+//     else return insert(pNode->right, elem);
+// }
 
 template <class T>
 bool LBSTree<T>::remove(const T &elem) {
-    bool flag = remove(root, elem);
+    // 使用非递归方法
+    if (root == nullptr) return false;
+    // 定位删除节点
+    pLBiTreeNode *temp = &root;
+    while ((*temp)->data != elem || *temp == nullptr) {
+        if ((*temp)->data > elem) temp = &((*temp)->left);
+        else temp = &((*temp)->right);
+    }
+    if (*temp == nullptr) return false; // 不存在这个节点
+
+    // 只有左右子树中一个的情况
+    if ((*temp)->left == nullptr) {
+        pLBiTreeNode q = *temp;
+        *temp = q->right;
+        delete q;
+    } else if ((*temp)->right == nullptr) {
+        pLBiTreeNode q = *temp;
+        *temp = q->left;
+        delete q;
+    } else {    // 两种情况都不是，选取左子树最大元素替换，再移除左子树最大元素。
+        // 定位最大元素
+        pLBiTreeNode *p = &((*temp)->left);
+        while ((*p)->right != nullptr) p = &((*p)->right);
+        // 替换
+        (*temp)->data = (*p)->data;
+        // 删除
+        pLBiTreeNode q = *p;
+        *p = q->left;
+        delete q;
+    }
+    
     if (!checkBalanceR(root)) makeBalance();
-    return flag;
+    return true;
 }
 
-template <class T>
-bool LBSTree<T>::remove(pLBiTreeNode &pNode, const T &elem) {
-    if (pNode == nullptr) return false;
-    if (pNode->data == elem) {
-        if (pNode->left == nullptr) {
-            pLBiTreeNode temp = pNode;
-            pNode = pNode->right;
-            delete temp;
-            return true;
-        } else if (pNode->right == nullptr) {
-            pLBiTreeNode temp = pNode;
-            pNode = pNode->left;
-            delete temp;
-            return true;
-        } else {
-            // 选择左子树最大元素替换
-            T maxElem;
-            if (!getMax(pNode->left, maxElem)) return false;    // 找不到最大元素
-            pNode->data = maxElem;                              // 替换
-            return remove(pNode->left, maxElem);                // 删除左子树的该最大元素
-        }
-    } else if (pNode->data > elem){
-        return remove(pNode->left, elem);
-    } else {
-        return remove(pNode->right, elem);
-    }
-}
+// template <class T>
+// bool LBSTree<T>::remove(pLBiTreeNode &pNode, const T &elem) {
+//     if (pNode == nullptr) return false;
+//     if (pNode->data == elem) {
+//         if (pNode->left == nullptr) {
+//             pLBiTreeNode temp = pNode;
+//             pNode = pNode->right;
+//             delete temp;
+//             return true;
+//         } else if (pNode->right == nullptr) {
+//             pLBiTreeNode temp = pNode;
+//             pNode = pNode->left;
+//             delete temp;
+//             return true;
+//         } else {
+//             // 选择左子树最大元素替换
+//             T maxElem;
+//             if (!getMax(pNode->left, maxElem)) return false;    // 找不到最大元素
+//             pNode->data = maxElem;                              // 替换
+//             return remove(pNode->left, maxElem);                // 删除左子树的该最大元素
+//         }
+//     } else if (pNode->data > elem){
+//         return remove(pNode->left, elem);
+//     } else {
+//         return remove(pNode->right, elem);
+//     }
+// }
 
 // template <class T>
 // string LBSTree<T>::preOrder() {
