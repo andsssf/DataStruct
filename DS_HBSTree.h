@@ -28,8 +28,6 @@ class LBSTree {
     // std::string afterOrder();
     std::string layerOrder();
     std::string prettyShow();
-
-    bool getNode(const T &elem, pLBiTreeNode p);
     
     private:
     bool clear(pLBiTreeNode pNode);

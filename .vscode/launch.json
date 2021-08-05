@@ -16,7 +16,7 @@
             "externalConsole": false,
             "MIMode": "gdb",
             // 以下是解决程序运行后终端自动输出 "[1]+ Done ***" 的解决方法，详见https://github.com/microsoft/vscode-cpptools/issues/3298
-            "miDebuggerArgs": "-q -ex quit; wait() { fg >/dev/null; }; /bin/gdb -q --interpreter=mi",
+            // "miDebuggerArgs": "-q -ex quit; wait() { fg >/dev/null; }; /bin/gdb -q --interpreter=mi",
             "setupCommands": [
                 {
                     "description": "为 gdb 启用整齐打印",

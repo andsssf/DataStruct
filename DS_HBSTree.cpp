@@ -31,6 +31,7 @@ LBSTree<T>::LBSTree() {
 template <class T>
 LBSTree<T>::~LBSTree() {
     clear(root);
+    root = nullptr;
 }
 
 template <class T>
