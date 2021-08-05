@@ -43,7 +43,6 @@ LHTreeNode<T>* LHTree<T>::createPath(pLHTreeNode left, pLHTreeNode right) {
     p->weight = left->weight + right->weight;
     p->left = left;
     p->right = right;
-    p->isPath = true;
     return p;
 }
 
@@ -87,5 +86,6 @@ int LHTree<T>::WPL() {
 template <class T>
 int LHTree<T>::WPL(pLHTreeNode pNode, int deep) {
     if (pNode == nullptr) return 0;
-    return pNode->weight * deep * (!pNode->isPath) + WPL(pNode->left, deep + 1) + WPL(pNode->right, deep + 1);
+    if (pNode->left == pNode->right) return pNode->weight * deep;
+    return WPL(pNode->left, deep + 1) + WPL(pNode->right, deep + 1);
 }
