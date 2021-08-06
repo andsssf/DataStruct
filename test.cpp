@@ -1,10 +1,11 @@
 #include <iostream>
-#include "DS_HSqQueue.h"
-#include "DS_HLinkQueue.h"
-#include "DS_HBSTree.h"
-#include "DS_HHTree.h"
-#include <vector>
-#include <algorithm> 
+// #include "DS_HSqQueue.h"
+// #include "DS_HLinkQueue.h"
+// #include "DS_HBSTree.h"
+// #include "DS_HHTree.h"
+// #include <vector>
+// #include <algorithm> 
+#include "DS_HMGraph.h"
 
 using namespace std;
 
@@ -54,6 +55,7 @@ int main() {
     // cout << "标准输出" << endl;
     // cerr << "标准错误" << endl;
 
+    // 排序算法和lambda表达式测试
     // vector<int> arr = {1, 2, 5, 6, 3, 9, 7, 8};
 
     // sort(arr.begin(), arr.end(), [](int a, int b) -> bool {return a > b;});
@@ -64,11 +66,15 @@ int main() {
     //     cout << n << endl;
     // }
 
+    // 哈夫曼树测试
     // LHTree<int> H({1, 1, 1, 3, 4, 2, 5, 5, 2, 2, 2, 2, 4});
     // LHTree<int> H({1, 2, 3});
-    LHTree<int> H;
-    H.build({1, 1, 1, 3, 4, 2, 5, 5, 2, 2, 2, 2, 4});
-    cout << H.WPL() << endl;
+    // LHTree<int> H;
+    // H.build({1, 1, 1, 3, 4, 2, 5, 5, 2, 2, 2, 2, 4});
+    // cout << H.WPL() << endl;
+    
+    // 图邻接矩阵存储结构测试
+    // MGraph<char> G({'a', 'b', 'c', 'd'}, {{0, 12, 4, GRAPH_INFINITY_DIST}, {12, 0, 44, 32}, {GRAPH_INFINITY_DIST, 23, 0, 33}, {GRAPH_INFINITY_DIST, GRAPH_INFINITY_DIST, 44, 0}});
     return 0;
 }
 
