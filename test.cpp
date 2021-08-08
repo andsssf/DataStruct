@@ -5,7 +5,8 @@
 // #include "DS_HHTree.h"
 // #include <vector>
 // #include <algorithm> 
-#include "DS_HMGraph.h"
+// #include "DS_HMGraph.h"
+#include "DS_HTGraph.h"
 
 using namespace std;
 
@@ -75,6 +76,30 @@ int main() {
     
     // 图邻接矩阵存储结构测试
     // MGraph<char> G({'a', 'b', 'c', 'd'}, {{0, 12, 4, GRAPH_INFINITY_DIST}, {12, 0, 44, 32}, {GRAPH_INFINITY_DIST, 23, 0, 33}, {GRAPH_INFINITY_DIST, GRAPH_INFINITY_DIST, 44, 0}});
+    // MGraph<char> G;
+    // cout << G.insertVertex('a') << endl;
+    // cout << G.insertVertex('b') << endl;
+    // cout << G.addEdge2('a', 'b', 10) << endl;
+    // cout << G.insertVertex('c') << endl;
+    // cout << G.addEdge2('c', 'b', 20) << endl;
+    // vector<char> nbs;
+    // cout << G.neighbors('b', nbs) << endl;
+    // cout << G.deleteVertex('b') << endl;
+
+    // 图邻接表存储结构测试
+    TGraph<char> G;
+    cout << G.insertVertex('a') << endl;
+    cout << G.insertVertex('b') << endl;
+    cout << G.addEdge2('a', 'b', 10) << endl;
+    cout << G.insertVertex('c') << endl;
+    cout << G.addEdge2('c', 'b', 20) << endl;
+    vector<char> nbs;
+    cout << G.neighbors('b', nbs) << endl;
+    cout << G.deleteVertex('b') << endl;
+    cout << G.insertVertex('d') << endl;
+    cout << G.addEdge2('a', 'c', 10) << endl;
+    cout << G.addEdge2('a', 'd', 21) << endl;
+    cout << G.removeEdge2('a', 'c') << endl;
     return 0;
 }
 
