@@ -7,6 +7,7 @@
 // #include <algorithm> 
 // #include "DS_HMGraph.h"
 #include "DS_HTGraph.h"
+#include "DS_HComGraphAlgorithms.h"
 
 using namespace std;
 
@@ -88,18 +89,37 @@ int main() {
 
     // 图邻接表存储结构测试
     TGraph<char> G;
-    cout << G.insertVertex('a') << endl;
-    cout << G.insertVertex('b') << endl;
-    cout << G.addEdge2('a', 'b', 10) << endl;
-    cout << G.insertVertex('c') << endl;
-    cout << G.addEdge2('c', 'b', 20) << endl;
-    vector<char> nbs;
-    cout << G.neighbors('b', nbs) << endl;
-    cout << G.deleteVertex('b') << endl;
-    cout << G.insertVertex('d') << endl;
-    cout << G.addEdge2('a', 'c', 10) << endl;
-    cout << G.addEdge2('a', 'd', 21) << endl;
-    cout << G.removeEdge2('a', 'c') << endl;
+    G.insertVertex('a');
+    G.insertVertex('b');
+    G.insertVertex('c');
+    G.insertVertex('d');
+    G.insertVertex('e');
+    G.insertVertex('f');
+    G.insertVertex('g');
+    G.insertVertex('h');
+
+    G.addEdge2('a', 'b');
+    G.addEdge2('a', 'c');
+    G.addEdge2('b', 'd');
+    G.addEdge2('e', 'b');
+    G.addEdge2('c', 'f');
+    G.addEdge2('c', 'g');
+    G.addEdge2('e', 'h');
+
+    // cout << G.insertVertex('a') << endl;
+    // cout << G.insertVertex('b') << endl;
+    // cout << G.addEdge2('a', 'b', 10) << endl;
+    // cout << G.insertVertex('c') << endl;
+    // cout << G.addEdge2('c', 'b', 20) << endl;
+    // vector<char> nbs;
+    // cout << G.neighbors('b', nbs) << endl;
+    // cout << G.deleteVertex('b') << endl;
+    // cout << G.insertVertex('d') << endl;
+    // cout << G.addEdge2('a', 'c', 10) << endl;
+    // cout << G.addEdge2('a', 'd', 21) << endl;
+    // cout << G.removeEdge2('a', 'c') << endl;
+    DepthFirstPrint(G, cout) << endl;
+    
     return 0;
 }
 

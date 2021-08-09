@@ -22,7 +22,22 @@ TGraph<T>::~TGraph() {
 }
 
 template <class T>
-bool TGraph<T>::adjacent(const T &a, const T &b) {
+vector<T> TGraph<T>::getAllVertexs() const {
+    vector<T> result;
+    int temp = 0;
+    if (vexs_num == 0) return result;
+    for (int i = 0; i < NTABLE_GRAPH_MAX_SIZE; i++) {
+        if (vexs[i].onUse) {
+            result.push_back(vexs[i].data);
+            temp++;
+            if (temp == vexs_num) break;
+        }
+    }
+    return result;
+}
+
+template <class T>
+bool TGraph<T>::adjacent(const T &a, const T &b) const {
     int loc;
     if (!localVertex(a, loc)) return false;
     pNTableEdgeNode temp = vexs[loc].next;
@@ -35,7 +50,7 @@ bool TGraph<T>::adjacent(const T &a, const T &b) {
 }
 
 template <class T>
-bool TGraph<T>::neighbors(const T &vex, std::vector<T> &out) {
+bool TGraph<T>::neighbors(const T &vex, std::vector<T> &out) const {
     int loc;
     if (!localVertex(vex, loc)) return false;
     pNTableEdgeNode temp = vexs[loc].next;
@@ -169,7 +184,7 @@ bool TGraph<T>::setEdgeWeight(const T &a, const T &b, int weight) {
 }
 
 template <class T>
-bool TGraph<T>::localVertex(const T &vex, int &outLoc) {
+bool TGraph<T>::localVertex(const T &vex, int &outLoc) const {
     if (vexs_num == 0) return false;
     int loc = -1;
     for (int i = 0; i < NTABLE_GRAPH_MAX_SIZE; i++) {

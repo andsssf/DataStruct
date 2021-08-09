@@ -3,7 +3,12 @@
 using namespace std;
 
 template <class T>
-bool MGraph<T>::adjacent(const T &a, const T &b) {
+vector<T> MGraph<T>::getAllVertexs() const {
+    return vexs;
+}
+
+template <class T>
+bool MGraph<T>::adjacent(const T &a, const T &b) const {
     int locA, locB;
     if (!localVertex2(a, b, locA, locB)) return false;
 
@@ -11,7 +16,7 @@ bool MGraph<T>::adjacent(const T &a, const T &b) {
 }
 
 template <class T>
-bool MGraph<T>::neighbors(const T &vex, vector<T> &out) {
+bool MGraph<T>::neighbors(const T &vex, vector<T> &out) const {
     if (vexs.size() == 0) return false;
     int loc = -1;
     
