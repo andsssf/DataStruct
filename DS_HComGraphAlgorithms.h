@@ -10,7 +10,7 @@ using namespace std;
 template <class T>
 int localVertex(const vector<T> &vexs, const T &elem) {
     int i = -1;
-    for (i = 0; i < vexs.size(); i++) {
+    for (typename vector<T>::size_type i = 0; i < vexs.size(); i++) {
         if (vexs[i] == elem) return i;
     }
     return i;
@@ -105,7 +105,7 @@ ostream& DepthFirstPrint(const TGraph<T> &graph, ostream &out) {
     vector<T> vexs = graph.getAllVertexs();
     vector<bool> vistied(vexs.size());
 
-    for (int i = 0; i < vexs.size(); i++) {
+    for (typename vector<T>::size_type i = 0; i < vexs.size(); i++) {
         if (!vistied[i]) {
             DFS(graph, out, vexs[i], vexs, vistied);
         }
@@ -119,7 +119,7 @@ ostream& DepthFirstPrint(const MGraph<T> &graph, ostream &out) {
     vector<T> vexs = graph.getAllVertexs();
     vector<bool> vistied(vexs.size());
 
-    for (int i = 0; i < vexs.size(); i++) {
+    for (typename vector<T>::size_type i = 0; i < vexs.size(); i++) {
         if (!vistied[i]) {
             DFS(graph, out, vexs[i], vexs, vistied);
         }
