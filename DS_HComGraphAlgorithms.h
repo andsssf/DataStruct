@@ -78,7 +78,7 @@ vector<T> Dijkstra(const MGraph<T> &graph, const T &start) {
 
     while (true) {
         int min = GRAPH_INFINITY_DIST, index = -1;
-        for (int i = 0; i < dist.size(); i++) {
+        for (vector<int>::size_type i = 0; i < dist.size(); i++) {
             if (!S[i] && dist[i] < min) {
                 min = dist[i];
                 index = i;
