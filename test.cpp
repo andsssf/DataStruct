@@ -119,8 +119,9 @@ int main() {
     // cout << G.addEdge2('a', 'd', 21) << endl;
     // cout << G.removeEdge2('a', 'c') << endl;
     // DepthFirstPrint(G, cout) << endl;
-    vector<char> path = Dijkstra(G, 'a');
     
+    vector<vector<int>> paths = Floyd(G);
+
     return 0;
 }
 

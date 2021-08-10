@@ -7,6 +7,75 @@
 
 using namespace std;
 
+// Floyd 最短路径算法
+template <class T>
+vector<vector<int>> Floyd(const TGraph<T> &graph) {
+    vector<T> vexs = graph.getAllVertexs();
+    vector<vector<int>> A(vexs.size(), vector<int>(vexs.size()));
+    vector<vector<int>> path(vexs.size(), vector<int>(vexs.size(), -1));
+    // 初始化
+    for (typename vector<T>::size_type i = 0; i < vexs.size(); i++) {
+        for (typename vector<T>::size_type j = 0; j < vexs.size(); j++) {
+            if (i != j) {
+                if (graph.adjacent(vexs[i], vexs[j])) {
+                    graph.getEdgeWeight(vexs[i], vexs[j], A[i][j]);
+                } else {
+                    A[i][j] = GRAPH_INFINITY_DIST;
+                }
+            } else {
+                A[i][j] = 0;
+            }
+        }
+    }
+
+    for (typename vector<T>::size_type k = 0; k < vexs.size(); k++) {
+        for (typename vector<T>::size_type i = 0; i < vexs.size(); i++) {
+            for (typename vector<T>::size_type j = 0; j < vexs.size(); j++) {
+                if (A[i][k] + A[k][j] >0 && A[i][k] + A[k][j] < A[i][j]) {
+                    A[i][j] = A[i][k] + A[k][j];
+                    path[i][j] = k;
+                }
+            }
+        }
+    }
+
+    return path;
+}
+
+template <class T>
+vector<vector<int>> Floyd(const MGraph<T> &graph) {
+    vector<T> vexs = graph.getAllVertexs();
+    vector<vector<int>> A(vexs.size(), vector<int>(vexs.size()));
+    vector<vector<int>> path(vexs.size(), vector<int>(vexs.size(), -1));
+    // 初始化
+    for (typename vector<T>::size_type i = 0; i < vexs.size(); i++) {
+        for (typename vector<T>::size_type j = 0; j < vexs.size(); j++) {
+            if (i != j) {
+                if (graph.adjacent(vexs[i], vexs[j])) {
+                    graph.getEdgeWeight(vexs[i], vexs[j], A[i][j]);
+                } else {
+                    A[i][j] = GRAPH_INFINITY_DIST;
+                }
+            } else {
+                A[i][j] = 0;
+            }
+        }
+    }
+
+    for (typename vector<T>::size_type k = 0; k < vexs.size(); k++) {
+        for (typename vector<T>::size_type i = 0; i < vexs.size(); i++) {
+            for (typename vector<T>::size_type j = 0; j < vexs.size(); j++) {
+                if (A[i][k] + A[k][j] >0 && A[i][k] + A[k][j] < A[i][j]) {
+                    A[i][j] = A[i][k] + A[k][j];
+                    path[i][j] = k;
+                }
+            }
+        }
+    }
+
+    return path;
+}
+
 // Dijkstra 最短路径算法
 template <class T>
 vector<T> Dijkstra(const TGraph<T> &graph, const T &start) {
@@ -32,7 +101,7 @@ vector<T> Dijkstra(const TGraph<T> &graph, const T &start) {
 
     while (true) {
         int min = GRAPH_INFINITY_DIST, index = -1;
-        for (int i = 0; i < dist.size(); i++) {
+        for (vector<int>::size_type i = 0; i < dist.size(); i++) {
             if (!S[i] && dist[i] < min) {
                 min = dist[i];
                 index = i;
