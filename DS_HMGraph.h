@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include "DS_HGraph.h"
-#define GRAPH_INFINITY_DIST 2147483647
 /*
     图的邻接矩阵存储实现
 */

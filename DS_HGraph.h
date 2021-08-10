@@ -1,5 +1,7 @@
 #pragma once
 
+#define GRAPH_INFINITY_DIST 2147483647
+
 template <class T>
 class Graph {
     public:

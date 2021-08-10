@@ -88,7 +88,7 @@ int main() {
     // cout << G.deleteVertex('b') << endl;
 
     // 图邻接表存储结构测试
-    TGraph<char> G;
+    MGraph<char> G;
     G.insertVertex('a');
     G.insertVertex('b');
     G.insertVertex('c');
@@ -118,7 +118,8 @@ int main() {
     // cout << G.addEdge2('a', 'c', 10) << endl;
     // cout << G.addEdge2('a', 'd', 21) << endl;
     // cout << G.removeEdge2('a', 'c') << endl;
-    DepthFirstPrint(G, cout) << endl;
+    // DepthFirstPrint(G, cout) << endl;
+    vector<char> path = Dijkstra(G, 'a');
     
     return 0;
 }

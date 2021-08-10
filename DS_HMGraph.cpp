@@ -12,7 +12,7 @@ bool MGraph<T>::adjacent(const T &a, const T &b) const {
     int locA, locB;
     if (!localVertex2(a, b, locA, locB)) return false;
 
-    return edges[locA][locB] != 0;
+    return edges[locA][locB] != GRAPH_INFINITY_DIST;
 }
 
 template <class T>
