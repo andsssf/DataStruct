@@ -1,4 +1,5 @@
 #include <iostream>
+// #include "DS_HSearchAlgorithms.h"
 // #include "DS_HSqQueue.h"
 // #include "DS_HLinkQueue.h"
 // #include "DS_HBSTree.h"
@@ -6,8 +7,9 @@
 // #include <vector>
 // #include <algorithm> 
 // #include "DS_HMGraph.h"
-#include "DS_HTGraph.h"
-#include "DS_HComGraphAlgorithms.h"
+// #include "DS_HTGraph.h"
+// #include "DS_HComGraphAlgorithms.h"
+#include "DS_HBTree.h"
 
 using namespace std;
 
@@ -88,23 +90,23 @@ int main() {
     // cout << G.deleteVertex('b') << endl;
 
     // 图邻接表存储结构测试
-    MGraph<char> G;
-    G.insertVertex('a');
-    G.insertVertex('b');
-    G.insertVertex('c');
-    G.insertVertex('d');
-    G.insertVertex('e');
-    G.insertVertex('f');
-    G.insertVertex('g');
-    G.insertVertex('h');
+    // MGraph<char> G;
+    // G.insertVertex('a');
+    // G.insertVertex('b');
+    // G.insertVertex('c');
+    // G.insertVertex('d');
+    // G.insertVertex('e');
+    // G.insertVertex('f');
+    // G.insertVertex('g');
+    // G.insertVertex('h');
 
-    G.addEdge2('a', 'b');
-    G.addEdge2('a', 'c');
-    G.addEdge2('b', 'd');
-    G.addEdge2('e', 'b');
-    G.addEdge2('c', 'f');
-    G.addEdge2('c', 'g');
-    G.addEdge2('e', 'h');
+    // G.addEdge2('a', 'b');
+    // G.addEdge2('a', 'c');
+    // G.addEdge2('b', 'd');
+    // G.addEdge2('e', 'b');
+    // G.addEdge2('c', 'f');
+    // G.addEdge2('c', 'g');
+    // G.addEdge2('e', 'h');
 
     // cout << G.insertVertex('a') << endl;
     // cout << G.insertVertex('b') << endl;
@@ -120,8 +122,15 @@ int main() {
     // cout << G.removeEdge2('a', 'c') << endl;
     // DepthFirstPrint(G, cout) << endl;
     
-    vector<vector<int>> paths = Floyd(G);
+    // vector<vector<int>> paths = Floyd(G);
 
+    // cout << seqSearch({1, 2, 3, 4, 5, 6, 7, 8}, 1) << endl;
+    BTree T;
+    T.insert(1);
+    T.insert(23);
+    T.insert(2);
+    T.insert(12);
+    T.insert(24);
     return 0;
 }
 
